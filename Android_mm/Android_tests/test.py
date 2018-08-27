@@ -3,7 +3,7 @@ import unittest
 from appium import webdriver
 # from Android_mm.Android_screens import tutorial_screen, login_screen, home_screen, recording_headache_screen
 from Android_mm.Android_screens import *
-
+import time
 
 class TestMM(unittest.TestCase):
 
@@ -36,9 +36,9 @@ class TestMM(unittest.TestCase):
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        loggin_in_step.click_register_button()
-        loggin_in_step.click_facebook_login_button()
-        loggin_in_step.click_forgot_password_button()
+        # loggin_in_step.click_register_button()
+        # loggin_in_step.click_facebook_login_button()
+        # loggin_in_step.click_forgot_password_button()
         loggin_in_step.loggin_in('s.shtkov@gmail.com', 'qwerty12')
 
         # Allow access to the device location
@@ -46,30 +46,40 @@ class TestMM(unittest.TestCase):
         home.allow_access()
         # home.click_hamburger_menu()
         # home.click_notes_button()
-        home.click_calendar_button()
-        home.click_migraine_news_button()
-        home.click_conversation_button()
-        home.click_provider_messages_button()
-        home.click_custom_pick_button()
+        # home.click_calendar_button()
+        # home.click_migraine_news_button()
+        # home.click_conversation_button()
+        # home.click_provider_messages_button()
+        # home.click_custom_pick_button()
+        # home.set_current_stress_level()
+        # home.clear_current_stress_level()
 
         # Click 'Record a Headache' button
-        home.click_record_headache_button()
+        # home.click_record_headache_button()
 
         # Click 'Earlier today' button
-        recording_headache = recording_headache_screen.RecordingHeadache(self.driver)
-        recording_headache.click_earlier_today_button()
+        # recording_headache = recording_headache_screen.RecordingHeadache(self.driver)
+        # recording_headache.click_earlier_today_button()
 
         # Click 'Just now' button
-        recording_headache.click_just_now_button()
+        # recording_headache.click_just_now_button()
 
         # Click 'Another day' button
-        recording_headache.click_another_day_button()
+        # recording_headache.click_another_day_button()
 
-        # Click report menu button
+        # Click menu's buttons
+        home.click_profile_menu_button()
         # home.click_report_menu_button()
+        # home.click_community_menu_button()
+        # home.click_provider_menu_button()
 
-    # def tearDown(self):
-    #     self.driver.quit()
+        my_profile = my_profile_screen.MyProfile(self.driver)
+        my_profile.changing_avatar_from_camera()
+        time.sleep(3)
+
+
+    def tearDown(self):
+        self.driver.quit()
 
 
 if __name__ == '__main__':
