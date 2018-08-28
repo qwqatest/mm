@@ -1,9 +1,13 @@
 
 import unittest
 from appium import webdriver
+
 # from Android_mm.Android_screens import tutorial_screen, login_screen, home_screen, recording_headache_screen
 from Android_mm.Android_screens import *
 import time
+
+
+# _________________________________________________________________________________________________________________
 
 class TestMM(unittest.TestCase):
 
@@ -68,15 +72,21 @@ class TestMM(unittest.TestCase):
         # recording_headache.click_another_day_button()
 
         # Click menu's buttons
-        home.click_profile_menu_button()
         # home.click_report_menu_button()
         # home.click_community_menu_button()
         # home.click_provider_menu_button()
+        home.click_profile_menu_button()
 
         my_profile = my_profile_screen.MyProfile(self.driver)
-        my_profile.changing_avatar_from_camera()
+        # my_profile.changing_avatar_from_camera()
+        # time.sleep(3)
+        # my_profile.changing_avatar_from_library()
+        # time.sleep(3)
+        # my_profile.set_next_appointment_date()
+        # time.sleep(3)
+        my_profile.switch_daily_notification()
+        my_profile.set_date_of_birth()
         time.sleep(3)
-
 
     def tearDown(self):
         self.driver.quit()
