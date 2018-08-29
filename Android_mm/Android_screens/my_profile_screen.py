@@ -33,7 +33,7 @@ class MyProfile(BaseScreen):
         allow_camera_button.click()
         time.sleep(1)
         allow_camera_button.click()
-        # time.sleep(1)
+        time.sleep(1)
 
         # Click Shutter button
         shutter_button_location = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
@@ -146,4 +146,12 @@ class MyProfile(BaseScreen):
             ec.element_to_be_clickable(remind_switcher_location))
         remind_switcher.click()
 
+    def assert_user_name(self):
+        # Checking user name
+        user_name_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/tv_user_username')
+        user_name = WebDriverWait(self.driver, 20).until(
+            ec.element_to_be_clickable(user_name_location))
+        assert user_name.text == 'Qw Qw'
+        print(user_name.text)
+        time.sleep(1)
 

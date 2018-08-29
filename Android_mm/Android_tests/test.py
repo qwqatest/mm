@@ -29,61 +29,115 @@ class TestMM(unittest.TestCase):
     def test_some_flow(self):
 
         tutorial_step = tutorial_screen.TutorialScreen(self.driver)
-        # tutorial_step.view_full_tutorial()
-        # tutorial_step.home_screen_navigation_tutorial()
-        # tutorial_step.entering_headache_tutorial()
-        # tutorial_step.generating_report_tutorial()
+        tutorial_step.view_full_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.home_screen_navigation_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.entering_headache_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.generating_report_tutorial()
+        time.sleep(1)
+        self.driver.back()
 
         # Closing pop-up window
-
         tutorial_step.close_popup()
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        # loggin_in_step.click_register_button()
-        # loggin_in_step.click_facebook_login_button()
-        # loggin_in_step.click_forgot_password_button()
-        loggin_in_step.loggin_in('s.shtkov@gmail.com', 'qwerty12')
+        loggin_in_step.click_register_button()
+        time.sleep(1)
+        self.driver.back()
+
+        loggin_in_step.click_facebook_login_button()
+        time.sleep(3)
+        self.driver.back()
+
+        loggin_in_step.click_forgot_password_button()
+        time.sleep(1)
+        self.driver.back()
+
+        loggin_in_step.loggin_in('qwqatest@gmail.com', 'qwerty12')
 
         # Allow access to the device location
         home = home_screen.HomeScreen(self.driver)
         home.allow_access()
-        # home.click_hamburger_menu()
-        # home.click_notes_button()
-        # home.click_calendar_button()
-        # home.click_migraine_news_button()
-        # home.click_conversation_button()
-        # home.click_provider_messages_button()
-        # home.click_custom_pick_button()
-        # home.set_current_stress_level()
-        # home.clear_current_stress_level()
+
+        home.click_hamburger_menu()
+        time.sleep(1)
+        self.driver.back()
+
+        home.click_notes_button()
+        time.sleep(1)
+        self.driver.back()
+
+        home.click_calendar_button()
+        time.sleep(2)
+        self.driver.back()
+
+        home.click_migraine_news_button()
+        time.sleep(3)
+        self.driver.back()
+
+        home.click_conversation_button()
+        time.sleep(2)
+        self.driver.back()
+        self.driver.back()
+
+        home.click_provider_messages_button()
+        time.sleep(1)
+        self.driver.back()
+
+        home.click_custom_pick_button()
+        time.sleep(1)
+        self.driver.back()
+
+        home.set_current_stress_level()
+        time.sleep(4)
+        home.clear_current_stress_level()
+        time.sleep(3)
 
         # Click 'Record a Headache' button
-        # home.click_record_headache_button()
+        home.click_record_headache_button()
 
         # Click 'Earlier today' button
-        # recording_headache = recording_headache_screen.RecordingHeadache(self.driver)
-        # recording_headache.click_earlier_today_button()
+        recording_headache = recording_headache_screen.RecordingHeadache(self.driver)
+        recording_headache.click_earlier_today_button()
 
         # Click 'Just now' button
-        # recording_headache.click_just_now_button()
+        recording_headache.click_just_now_button()
 
         # Click 'Another day' button
-        # recording_headache.click_another_day_button()
+        recording_headache.click_another_day_button()
+        self.driver.back()
 
-        # Click menu's buttons
-        # home.click_report_menu_button()
-        # home.click_community_menu_button()
-        # home.click_provider_menu_button()
+        # Click base menu's buttons
+        home.click_report_menu_button()
+        time.sleep(1)
+        self.driver.back()
+
+        home.click_community_menu_button()
+        time.sleep(1)
+        self.driver.back()
+
+        home.click_provider_menu_button()
+        time.sleep(1)
+        self.driver.back()
+
         home.click_profile_menu_button()
 
         my_profile = my_profile_screen.MyProfile(self.driver)
-        # my_profile.changing_avatar_from_camera()
-        # time.sleep(3)
-        # my_profile.changing_avatar_from_library()
-        # time.sleep(3)
-        # my_profile.set_next_appointment_date()
-        # time.sleep(3)
+        my_profile.changing_avatar_from_camera()
+        time.sleep(3)
+        my_profile.changing_avatar_from_library()
+        time.sleep(3)
+        my_profile.set_next_appointment_date()
+        time.sleep(3)
         my_profile.switch_daily_notification()
         my_profile.set_date_of_birth()
         time.sleep(3)

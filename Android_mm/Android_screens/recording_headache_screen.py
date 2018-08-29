@@ -27,4 +27,3 @@ class RecordingHeadache(BaseScreen):
         another_day_button_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/ll_another')
         another_day_button = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(another_day_button_location))
         another_day_button.click()
-        self.driver.back()
