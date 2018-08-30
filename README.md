@@ -19,6 +19,7 @@
   export ANDROID_PLATFORM_TOOLS="/Users/sergey/Library/Android/sdk/platform-tools"
   PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
   export PATH=$JAVA_HOME/bin:$PATH
+
 • Install Appium Python client: "pip install Appium-Python-Client"
 • Install Appium UiAutomator2 Driver: "npm install appium-uiautomator2-driver"
 • Install carthage: "brew install carthage"

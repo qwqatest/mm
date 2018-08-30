@@ -18,21 +18,21 @@ class RegistrationScreen(BaseScreen):
         email_field = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(email_field_location))
         email_field.send_keys(email)
-        time.sleep(1)
+        # time.sleep(1)
 
         # Enter First name
         first_name_field_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/edit_first_name')
         first_name_field = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(first_name_field_location))
         first_name_field.send_keys(first_name)
-        time.sleep(1)
+        # time.sleep(1)
 
         # Enter Last name
         last_name_field_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/edit_last_name')
         last_name_field = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(last_name_field_location))
         last_name_field.send_keys(last_name)
-        time.sleep(1)
+        # time.sleep(1)
 
         # Click Birth date button
         birth_date_button_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/btn_birth_date')
@@ -63,11 +63,17 @@ class RegistrationScreen(BaseScreen):
         register_button = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(register_button_location))
         register_button.click()
-        time.sleep(3)
+        time.sleep(2)
 
         # Click 'Don't have a provider' button
         no_provider_button_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/btn_dont_have_doctor')
         no_provider_button = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(no_provider_button_location))
         no_provider_button.click()
-        time.sleep(3)
+        time.sleep(1)
+
+    def click_get_started_button(self):
+        get_started_button_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/btn_get_started')
+        get_started_button = WebDriverWait(self.driver, 20).until(
+            ec.element_to_be_clickable(get_started_button_location))
+        get_started_button.click()

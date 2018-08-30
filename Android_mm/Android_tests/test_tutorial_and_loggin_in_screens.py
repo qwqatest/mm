@@ -8,7 +8,7 @@ import time
 
 # _________________________________________________________________________________________________________________
 
-class TestRegistration(unittest.TestCase):
+class TestTutorialAndLoggin(unittest.TestCase):
 
     def setUp(self):
 
@@ -24,24 +24,43 @@ class TestRegistration(unittest.TestCase):
 
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(20)
-        self.email = ("qwqatest+%i@gmail.com" % (time.time()))
 
-    def test_registration(self):
+    def test_tutorial_loggin_in_screens(self):
+        
+        # Clicking all buttons on this screen
+        tutorial_step = tutorial_screen.TutorialScreen(self.driver)
+        tutorial_step.view_full_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.home_screen_navigation_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.entering_headache_tutorial()
+        time.sleep(1)
+        self.driver.back()
+
+        tutorial_step.generating_report_tutorial()
+        time.sleep(1)
+        self.driver.back()
 
         # Closing pop-up window
-        tutorial_step = tutorial_screen.TutorialScreen(self.driver)
         tutorial_step.close_popup()
 
-        # Entering Login and Password
+        # Clicking all buttons on this screen
         loggin_in_step = login_screen.LoginScreen(self.driver)
         loggin_in_step.click_register_button()
+        time.sleep(1)
+        self.driver.back()
 
-        registration_step = registration_screen.RegistrationScreen(self.driver)
-        registration_step.new_user_registration(self.email, 'Qw', 'Qw', 'qwerty12', 'qwerty12')
+        loggin_in_step.click_facebook_login_button()
+        time.sleep(3)
+        self.driver.back()
 
-        my_profile = my_profile_screen.MyProfile(self.driver)
-        my_profile.assert_user_name()
-
+        loggin_in_step.click_forgot_password_button()
+        time.sleep(1)
+        self.driver.back()
         time.sleep(3)
 
     def tearDown(self):

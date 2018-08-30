@@ -8,10 +8,9 @@ import time
 
 # _________________________________________________________________________________________________________________
 
-class TestRegistration(unittest.TestCase):
+class TestMyProfileScreen(unittest.TestCase):
 
     def setUp(self):
-
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '8.1'
@@ -24,9 +23,8 @@ class TestRegistration(unittest.TestCase):
 
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(20)
-        self.email = ("qwqatest+%i@gmail.com" % (time.time()))
 
-    def test_registration(self):
+    def test_my_profile_screen(self):
 
         # Closing pop-up window
         tutorial_step = tutorial_screen.TutorialScreen(self.driver)
@@ -34,14 +32,22 @@ class TestRegistration(unittest.TestCase):
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        loggin_in_step.click_register_button()
+        loggin_in_step.loggin_in('qwqatest@gmail.com', 'qwerty12')
 
-        registration_step = registration_screen.RegistrationScreen(self.driver)
-        registration_step.new_user_registration(self.email, 'Qw', 'Qw', 'qwerty12', 'qwerty12')
+        # Allow access to the device location
+        home = home_screen.HomeScreen(self.driver)
+        home.allow_access()
+        home.click_profile_menu_button()
 
         my_profile = my_profile_screen.MyProfile(self.driver)
-        my_profile.assert_user_name()
-
+        my_profile.changing_avatar_from_camera()
+        time.sleep(3)
+        my_profile.changing_avatar_from_library()
+        time.sleep(3)
+        my_profile.set_next_appointment_date()
+        time.sleep(3)
+        my_profile.switch_daily_notification()
+        my_profile.set_date_of_birth()
         time.sleep(3)
 
     def tearDown(self):

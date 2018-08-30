@@ -33,12 +33,12 @@ class MyProfile(BaseScreen):
         allow_camera_button.click()
         time.sleep(1)
         allow_camera_button.click()
-        time.sleep(1)
+        time.sleep(2)
 
         # Click Shutter button
         shutter_button_location = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
         shutter_button = WebDriverWait(self.driver, 20).until(
-            ec.element_to_be_clickable(shutter_button_location))
+            ec.visibility_of_element_located(shutter_button_location))
         shutter_button.click()
         time.sleep(4)
 

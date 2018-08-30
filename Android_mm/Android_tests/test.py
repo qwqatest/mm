@@ -29,39 +29,12 @@ class TestMM(unittest.TestCase):
     def test_some_flow(self):
 
         tutorial_step = tutorial_screen.TutorialScreen(self.driver)
-        tutorial_step.view_full_tutorial()
-        time.sleep(1)
-        self.driver.back()
-
-        tutorial_step.home_screen_navigation_tutorial()
-        time.sleep(1)
-        self.driver.back()
-
-        tutorial_step.entering_headache_tutorial()
-        time.sleep(1)
-        self.driver.back()
-
-        tutorial_step.generating_report_tutorial()
-        time.sleep(1)
-        self.driver.back()
 
         # Closing pop-up window
         tutorial_step.close_popup()
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        loggin_in_step.click_register_button()
-        time.sleep(1)
-        self.driver.back()
-
-        loggin_in_step.click_facebook_login_button()
-        time.sleep(3)
-        self.driver.back()
-
-        loggin_in_step.click_forgot_password_button()
-        time.sleep(1)
-        self.driver.back()
-
         loggin_in_step.loggin_in('qwqatest@gmail.com', 'qwerty12')
 
         # Allow access to the device location
@@ -131,19 +104,8 @@ class TestMM(unittest.TestCase):
 
         home.click_profile_menu_button()
 
-        my_profile = my_profile_screen.MyProfile(self.driver)
-        my_profile.changing_avatar_from_camera()
-        time.sleep(3)
-        my_profile.changing_avatar_from_library()
-        time.sleep(3)
-        my_profile.set_next_appointment_date()
-        time.sleep(3)
-        my_profile.switch_daily_notification()
-        my_profile.set_date_of_birth()
-        time.sleep(3)
-
     def tearDown(self):
-        self.driver.quit()
+       self.driver.quit()
 
 
 if __name__ == '__main__':
