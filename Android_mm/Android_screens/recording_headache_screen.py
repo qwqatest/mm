@@ -256,11 +256,3 @@ class RecordingHeadache(BaseScreen):
             ec.element_to_be_clickable(done_button_location))
         done_button.click()
 
-
-# TouchAction(driver).press(x=623, y=902).move_to(x=627, y=1065).release().perform()
-#
-# TouchAction(driver).press(x=627, y=1057).move_to(x=635, y=902).release().perform()
-#
-# TouchAction(driver).press(x=759, y=902).move_to(x=755, y=1061).release().perform()
-#
-# TouchAction(driver).press(x=755, y=1057).move_to(x=739, y=898).release().perform()

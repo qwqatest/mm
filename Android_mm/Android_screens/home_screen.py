@@ -69,7 +69,7 @@ class HomeScreen(BaseScreen):
 
 
     def set_current_stress_level(self):
-        # current_stress_seekbar_location = (MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("com.migrainemonitor.dev:id/seek_stress")')
+        # current_stress_seekbarc
         current_stress_seekbar_location = (MobileBy.ID,"com.migrainemonitor.dev:id/seek_stress")
         current_stress_seekbar = WebDriverWait(
             self.driver, 20).until(ec.presence_of_element_located(current_stress_seekbar_location))

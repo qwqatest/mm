@@ -45,7 +45,7 @@ class MyProfile(BaseScreen):
         # Click Done button
         done_button_location = (MobileBy.ACCESSIBILITY_ID, 'Done')
         done_button = WebDriverWait(self.driver, 20).until(
-            ec.element_to_be_clickable(done_button_location))
+            ec.presence_of_element_located(done_button_location))
         done_button.click()
         # time.sleep(3)
 

@@ -49,7 +49,7 @@ class TestFullFlow(unittest.TestCase):
         home.click_calendar_button()
         time.sleep(2)
         headache_for_day = headache_for_day_screen.HeadacheForADay(self.driver)
-        headache_for_day.select_date_in_calendar()
+        # headache_for_day.select_date_in_calendar()
         headache_for_day.click_plus_button()
 
         # Click 'Another day' button
