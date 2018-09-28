@@ -38,7 +38,12 @@ class TestRegistration(unittest.TestCase):
 
         registration_step = registration_screen.RegistrationScreen(self.driver)
         registration_step.new_user_registration(self.email, 'Qw', 'Qw', 'qwerty12', 'qwerty12')
+        print(self.email)
 
+        home = home_screen.HomeScreen(self.driver)
+        home.allow_access()
+        home.click_ok_button()
+        home.click_profile_menu_button()
         my_profile = my_profile_screen.MyProfile(self.driver)
         my_profile.assert_user_name()
 

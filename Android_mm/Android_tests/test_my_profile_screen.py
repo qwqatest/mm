@@ -22,6 +22,7 @@ class TestMyProfileScreen(unittest.TestCase):
         desired_caps['automationName'] = 'UiAutomator2'
 
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        self.email = ("qwqatest+%i@gmail.com" % (time.time()))
         self.driver.implicitly_wait(20)
 
     def test_my_profile_screen(self):
@@ -32,11 +33,16 @@ class TestMyProfileScreen(unittest.TestCase):
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        loggin_in_step.loggin_in('qwqatest@gmail.com', 'qwerty12')
+        loggin_in_step.loggin_in('qwqatest+5@gmail.com', 'qwerty12')
+        # loggin_in_step.click_register_button()
+
+        # registration_step = registration_screen.RegistrationScreen(self.driver)
+        # registration_step.new_user_registration(self.email, 'Qw', 'Qw', 'qwerty12', 'qwerty12')
 
         # Allow access to the device location
         home = home_screen.HomeScreen(self.driver)
         home.allow_access()
+        # home.click_ok_button()
         home.click_profile_menu_button()
 
         my_profile = my_profile_screen.MyProfile(self.driver)

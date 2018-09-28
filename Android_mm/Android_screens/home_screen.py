@@ -18,6 +18,13 @@ class HomeScreen(BaseScreen):
         allow_button = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(allow_button_location))
         allow_button.click()
 
+    def click_ok_button(self):
+
+        ok_button_location = (MobileBy.ID, 'android:id/button1')
+        ok_button = WebDriverWait(self.driver, 20).until(
+            ec.element_to_be_clickable(ok_button_location))
+        ok_button.click()
+
     def click_hamburger_menu(self):
 
         hamburger_menu_button_location = (MobileBy.ACCESSIBILITY_ID, 'open navigation drawer')

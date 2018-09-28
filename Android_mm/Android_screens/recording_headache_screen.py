@@ -58,6 +58,12 @@ class RecordingHeadache(BaseScreen):
             ec.element_to_be_clickable(days_picker_location))
         TouchAction(self.driver).press(x=468, y=1201).move_to(x=468, y=1123).release().perform()
 
+    def move_hours_picker_one_hour_ahead(self):
+        days_picker_location = (MobileBy.ID, 'com.migrainemonitor.dev:id/ll_another')
+        WebDriverWait(self.driver, 20).until(
+                ec.element_to_be_clickable(days_picker_location))
+        TouchAction(self.driver).press(x=631, y=1243).move_to(x=627, y=1119).release().perform()
+
     #  _________________________________  "How did you feel?" step  ____________________________________
     def set_headache_pain_intensity(self):
 

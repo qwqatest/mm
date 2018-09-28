@@ -33,12 +33,12 @@ class MyProfile(BaseScreen):
         allow_camera_button.click()
         time.sleep(1)
         allow_camera_button.click()
-        time.sleep(2)
+        time.sleep(3)
 
         # Click Shutter button
         shutter_button_location = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
         shutter_button = WebDriverWait(self.driver, 20).until(
-            ec.visibility_of_element_located(shutter_button_location))
+            ec.presence_of_element_located(shutter_button_location))
         shutter_button.click()
         time.sleep(4)
 
@@ -110,7 +110,16 @@ class MyProfile(BaseScreen):
         next_day_location = (MobileBy.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.Button[2]')
         next_day = WebDriverWait(self.driver, 20).until(
             ec.element_to_be_clickable(next_day_location))
-        next_day.click()
+        i = 1
+        while i < 8:
+            i+= 1
+            next_day.click()
+        # next_day.click()
+        # next_day.click()
+        # next_day.click()
+        # next_day.click()
+        # next_day.click()
+        # next_day.click()
 
         # Click 'Ok'button
         ok_button_location = (MobileBy.ID, 'android:id/button1')

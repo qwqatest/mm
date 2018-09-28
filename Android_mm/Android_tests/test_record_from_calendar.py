@@ -1,4 +1,3 @@
-
 import unittest
 from appium import webdriver
 
@@ -6,12 +5,13 @@ from appium import webdriver
 from Android_mm.Android_screens import *
 import time
 
+
 # _________________________________________________________________________________________________________________
 
-
-class TestFullFlow(unittest.TestCase):
+class RecordFromCalendar(unittest.TestCase):
 
     def setUp(self):
+
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '8.1'
@@ -23,36 +23,30 @@ class TestFullFlow(unittest.TestCase):
         desired_caps['automationName'] = 'UiAutomator2'
 
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        self.email = ("qwqatest+%i@gmail.com" % (time.time()))
+        self.driver.implicitly_wait(5)
 
-    def test_full_flow(self):
+    def test_record_from_calendar(self):
 
-        self.driver.implicitly_wait(20)
-        # Closing pop-up window
         tutorial_step = tutorial_screen.TutorialScreen(self.driver)
+
+        # Closing pop-up window
         tutorial_step.close_popup()
 
         # Entering Login and Password
         loggin_in_step = login_screen.LoginScreen(self.driver)
-        loggin_in_step.click_register_button()
-
-        registration_step = registration_screen.RegistrationScreen(self.driver)
-        registration_step.new_user_registration(self.email, 'Qw', 'Qw', 'qwerty12', 'qwerty12')
-        # registration_step.click_get_started_button()
+        loggin_in_step.loggin_in('qwqatest+5@gmail.com', 'qwerty12')
 
         # Allow access to the device location
         home = home_screen.HomeScreen(self.driver)
         home.allow_access()
-        home.click_ok_button()
 
-        # Click 'Record a Headache' button
-        # home.click_record_headache_button()
+        #Click 'Record a Headache' button
         home.click_calendar_button()
         time.sleep(2)
         headache_for_day = headache_for_day_screen.HeadacheForADay(self.driver)
-        # headache_for_day.select_date_in_calendar()
-        headache_for_day.click_plus_button()
+        headache_for_day.select_date_in_calendar()
 
+        headache_for_day.click_plus_button()
         # Click 'Another day' button
         recording_headache = recording_headache_screen.RecordingHeadache(self.driver)
         # recording_headache.click_another_day_button()
@@ -93,6 +87,7 @@ class TestFullFlow(unittest.TestCase):
 
         #   ___________________________  "Your headache summary" step   __________________________________
         recording_headache.click_submit_button()
+
         #   ___________________________  "Medications" step   __________________________________
         recording_headache.click_done_button()
 
@@ -103,6 +98,5 @@ class TestFullFlow(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
